@@ -1,0 +1,26 @@
+---
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm install
+      - name: Build the Angular app
+        run: npm run build -- --base-href="/university-psp/"
+      - env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        name: Deploy to GitHub Pages
+        uses: angular-schule/ngx-deploy-gh-pages@v2
+        with:
+          baseHref: /university-psp/
+name: Deploy Angular to GitHub Pages
+'on':
+  push:
+    branches:
+      - main
