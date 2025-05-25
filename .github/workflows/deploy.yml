@@ -15,7 +15,7 @@ jobs:
         run: npx ng build --base-href="/university-psp/"
       - name: Deploy to GitHub Pages
         run: |
-          npx angular-cli-ghpages --dir=dist/university-psp --name="github-actions[bot]" --email="github-actions[bot]@users.noreply.github.com"
+          npx angular-cli-ghpages --dir=dist/university-psp/browser --name="github-actions[bot]" --email="github-actions[bot]@users.noreply.github.com"
 name: Deploy Angular to GitHub Pages
 'on':
   push:
