@@ -12,7 +12,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build Angular app
-        run: ng build --base-href="/university-psp/"
+        run: npx ng build --base-href="/university-psp/"
       - name: Deploy to GitHub Pages
         run: |
           npx angular-cli-ghpages --dir=dist/university-psp --name="github-actions[bot]" --email="github-actions[bot]@users.noreply.github.com"
