@@ -15,6 +15,18 @@ export const routes: Routes = [
             {
                 path: 'sales',
                 loadComponent: () => import('./features/sales/sales.component').then(m => m.SalesComponent)
+            },
+            {
+                path: 'employees',
+                loadComponent: () => import('./features/employees/employees.component').then(m => m.EmployeesComponent)
+            },
+            {
+                path: 'commission-parameters',
+                loadComponent: () => import('./features/commission-parameters/commission-parameters.component').then(m => m.CommissionParametersComponent)
+            },
+            {
+                path: 'calculate-commissions',
+                loadComponent: () => import('./features/calculate-commissions/calculate-commissions.component').then(m => m.CalculateCommissionsComponent)
             }
         ]
     },
