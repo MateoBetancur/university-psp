@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
   standalone: true,
@@ -9,5 +10,10 @@ import { NgIf } from '@angular/common';
   templateUrl: './layout.component.html',
 })
 export class LayoutComponent {
-  // Aquí puedes manejar lógica de navegación, usuario, etc.
+  constructor(private authService: AuthService) { }
+
+
+  onLogout() {
+    this.authService.logout();
+  }
 }
