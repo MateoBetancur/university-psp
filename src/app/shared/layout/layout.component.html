@@ -1,0 +1,18 @@
+<div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-800 text-white p-4">
+        <nav class="space-y-4">
+            <a routerLink="/sales" class="block hover:bg-gray-700 rounded px-3 py-2">Sales</a>
+            <a routerLink="/employees" class="block hover:bg-gray-700 rounded px-3 py-2">Employees</a>
+            <a routerLink="/commission-parameters" class="block hover:bg-gray-700 rounded px-3 py-2">Commission
+                Parameters</a>
+            <a routerLink="/calculate-commissions" class="block hover:bg-gray-700 rounded px-3 py-2">Calculate
+                Commissions</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 bg-gray-100">
+        <router-outlet></router-outlet>
+    </main>
+</div>
