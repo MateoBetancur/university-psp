@@ -1,0 +1,1 @@
+import{Ma as n,Na as p,Qa as s,za as o}from"./chunk-NINQO5WD.js";var m=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=o({type:t,selectors:[["app-employees"]],decls:2,vars:0,template:function(e,l){e&1&&(n(0,"p"),s(1,"employees works!"),p())},encapsulation:2})};export{m as EmployeesComponent};

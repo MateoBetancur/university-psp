@@ -1,0 +1,1 @@
+import{Ma as s,Na as m,Qa as n,za as o}from"./chunk-NINQO5WD.js";var a=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=o({type:t,selectors:[["app-commission-parameters"]],decls:2,vars:0,template:function(e,r){e&1&&(s(0,"p"),n(1,"commission-parameters works!"),m())},encapsulation:2})};export{a as CommissionParametersComponent};
