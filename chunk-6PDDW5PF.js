@@ -1,0 +1,1 @@
+import{Ea as s,Fa as o,Ia as a,va as n}from"./chunk-7RRNMNI5.js";var p=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=n({type:t,selectors:[["app-sales"]],decls:2,vars:0,template:function(e,i){e&1&&(s(0,"p"),a(1,"sales works!"),o())},encapsulation:2})};export{p as SalesComponent};
