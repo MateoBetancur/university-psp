@@ -1,8 +1,9 @@
 <!--
   Sección de registro y visualización de ventas.
-  El formulario permite registrar una nueva venta, que se almacena en localStorage a través de SalesStorageService.
-  Las ventas registradas se visualizan en la tabla inferior, permitiendo ver el histórico de ventas.
-  Los roles parametrizados son cargados desde CommissionStorageService para seleccionar el rol del vendedor.
+  El formulario permite registrar una nueva venta seleccionando un empleado.
+  El rol del empleado se carga automáticamente.
+  Las ventas se almacenan en localStorage a través de SalesStorageService.
+  Los empleados se cargan desde EmployeeStorageService.
 -->
 
 <main class="p-6 max-w-4xl mx-auto bg-white rounded-lg shadow">
@@ -18,33 +19,16 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <label>
             <span class="block text-sm font-medium text-gray-700 mb-1"
-              >Nombre del empleado</span
-            >
-            <input
-              type="text"
-              [(ngModel)]="newSale.employeeName"
-              name="employeeName"
-              required
-              placeholder="Nombre del empleado"
-              class="border p-2 rounded w-full"
-            />
-          </label>
-
-          <label>
-            <span class="block text-sm font-medium text-gray-700 mb-1"
-              >Rol del empleado</span
+              >Empleado</span
             >
             <select
-              [(ngModel)]="newSale.role"
-              name="role"
+              [(ngModel)]="selectedEmployeeId"
+              name="employeeId"
               required
               class="border p-2 rounded w-full"
             >
-              <option
-                *ngFor="let param of commissionParameters"
-                [value]="param.role"
-              >
-                {{ param.role }}
+              <option *ngFor="let employee of employees" [value]="employee.id">
+                {{ employee.name }} ({{ employee.role }})
               </option>
             </select>
           </label>
