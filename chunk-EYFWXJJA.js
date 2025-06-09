@@ -1,0 +1,1 @@
+import{L as r}from"./chunk-V4WTADHK.js";var e="commissionParameters",a=class t{constructor(){}save(o){localStorage.setItem(e,JSON.stringify(o))}load(){let o=localStorage.getItem(e);return o?JSON.parse(o):[]}clear(){localStorage.removeItem(e)}static \u0275fac=function(i){return new(i||t)};static \u0275prov=r({token:t,factory:t.\u0275fac,providedIn:"root"})};export{a};

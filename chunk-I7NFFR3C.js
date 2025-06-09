@@ -1,0 +1,1 @@
+import{L as a}from"./chunk-V4WTADHK.js";var o="sales",r=class t{save(e){localStorage.setItem(o,JSON.stringify(e))}load(){let e=localStorage.getItem(o);return e?JSON.parse(e):[]}clear(){localStorage.removeItem(o)}static \u0275fac=function(c){return new(c||t)};static \u0275prov=a({token:t,factory:t.\u0275fac,providedIn:"root"})};export{r as a};

@@ -1,1 +1,0 @@
-import{Ma as s,Na as n,Qa as a,za as o}from"./chunk-NINQO5WD.js";var i=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=o({type:t,selectors:[["app-calculate-commissions"]],decls:2,vars:0,template:function(e,c){e&1&&(s(0,"p"),a(1,"calculate-commissions works!"),n())},encapsulation:2})};export{i as CalculateCommissionsComponent};
