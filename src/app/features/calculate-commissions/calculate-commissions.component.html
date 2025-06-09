@@ -1,1 +1,62 @@
-<p>calculate-commissions works!</p>
+<!--
+  Sección de cálculo y visualización de comisiones.
+  Los datos se obtienen de SalesStorageService y CommissionStorageService.
+  Se calcula la comisión por empleado y se muestran en:
+  - Tabla resumen
+  - Gráfico de barras
+  - Gráfico de torta
+  - Lista de top 3 empleados
+-->
+
+<main class="p-6 max-w-6xl mx-auto bg-white rounded-lg shadow">
+  <header>
+    <h2 class="text-2xl font-bold mb-4">Reporte de Comisiones</h2>
+  </header>
+
+  <!-- Tabla resumen -->
+  <section class="mb-8">
+    <h3 class="text-xl font-bold mb-4">Resumen de Comisiones por Empleado</h3>
+    <table class="min-w-full border text-center">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="border px-4 py-2">Empleado</th>
+          <th class="border px-4 py-2">Total Ventas</th>
+          <th class="border px-4 py-2">Total Comisión</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let summary of commissionSummaries">
+          <td class="border px-4 py-2">{{ summary.employeeName }}</td>
+          <td class="border px-4 py-2">${{ summary.totalSales | number }}</td>
+          <td class="border px-4 py-2">
+            ${{ summary.totalCommission | number }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Gráfico de barras -->
+  <section class="mb-8">
+    <h3 class="text-xl font-bold mb-4">Gráfico de Barras - Total Comisión</h3>
+    <canvas id="barChart"></canvas>
+  </section>
+
+  <!-- Gráfico de torta -->
+  <section class="mb-8">
+    <h3 class="text-xl font-bold mb-4">
+      Gráfico de Torta - Distribución de Comisiones
+    </h3>
+    <canvas id="pieChart"></canvas>
+  </section>
+
+  <!-- Lista top 3 empleados -->
+  <section class="mb-8">
+    <h3 class="text-xl font-bold mb-4">Top 3 Empleados por Comisión</h3>
+    <ol class="list-decimal list-inside text-left">
+      <li *ngFor="let top of topEmployees">
+        {{ top.employeeName }} - ${{ top.totalCommission | number }}
+      </li>
+    </ol>
+  </section>
+</main>
