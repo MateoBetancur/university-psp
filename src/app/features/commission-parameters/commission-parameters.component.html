@@ -1,59 +1,90 @@
-<div class="p-6 max-w-xl mx-auto bg-white rounded-lg shadow">
-  <h2 class="text-2xl font-bold mb-4">Parametrización de Comisiones</h2>
+<!--
+  Sección de parametrización de comisiones.
+  En esta vista se permite agregar, editar y eliminar los parámetros de comisión para los distintos roles de vendedores.
+  Los parámetros se almacenan en localStorage a través del servicio CommissionStorageService.
+  Posteriormente serán utilizados en la vista de registro de ventas y en el cálculo de comisiones.
+-->
 
-  <form
-    (ngSubmit)="saveParameters()"
-    #commissionForm="ngForm"
-    class="space-y-4"
-  >
-    <div
-      *ngFor="let param of parameters; let i = index"
-      class="flex items-center space-x-4"
+<main class="p-6 max-w-xl mx-auto bg-white rounded-lg shadow">
+  <header>
+    <h2 class="text-2xl font-bold mb-4">Parametrización de Comisiones</h2>
+  </header>
+
+  <section aria-labelledby="parameters-section">
+    <form
+      (ngSubmit)="saveParameters()"
+      #commissionForm="ngForm"
+      class="space-y-4"
     >
-      <input
-        type="text"
-        [(ngModel)]="param.role"
-        name="role{{ i }}"
-        required
-        placeholder="Rol del vendedor"
-        class="border p-2 rounded w-1/2"
-      />
+      <fieldset>
+        <legend id="parameters-section" class="sr-only">
+          Parámetros de comisiones
+        </legend>
 
-      <input
-        type="number"
-        [(ngModel)]="param.percentage"
-        name="percentage{{ i }}"
-        required
-        min="0"
-        max="100"
-        placeholder="% Comisión"
-        class="border p-2 rounded w-1/3"
-      />
+        <div
+          *ngFor="let param of parameters; let i = index"
+          class="flex items-center space-x-4"
+        >
+          <label class="w-1/2">
+            <span class="block text-sm font-medium text-gray-700 mb-1"
+              >Rol del vendedor</span
+            >
+            <input
+              type="text"
+              [(ngModel)]="param.role"
+              name="role{{ i }}"
+              required
+              placeholder="Rol del vendedor"
+              class="border p-2 rounded w-full"
+            />
+          </label>
 
-      <button type="button" (click)="removeParameter(i)" class="text-red-500">
-        Eliminar
-      </button>
-    </div>
+          <label class="w-1/3">
+            <span class="block text-sm font-medium text-gray-700 mb-1"
+              >% Comisión</span
+            >
+            <input
+              type="number"
+              [(ngModel)]="param.percentage"
+              name="percentage{{ i }}"
+              required
+              min="0"
+              max="100"
+              placeholder="% Comisión"
+              class="border p-2 rounded w-full"
+            />
+          </label>
 
-    <div class="pt-4">
-      <button
-        type="button"
-        (click)="addParameter()"
-        class="bg-blue-500 text-white px-4 py-2 rounded mr-2"
-      >
-        Agregar Rol
-      </button>
-      <button
-        type="submit"
-        [disabled]="!commissionForm.form.valid"
-        class="bg-green-500 text-white px-4 py-2 rounded"
-      >
-        Guardar Parámetros
-      </button>
-    </div>
+          <button
+            type="button"
+            (click)="removeParameter(i)"
+            class="text-red-500 mt-6"
+          >
+            Eliminar
+          </button>
+        </div>
+      </fieldset>
 
-    <div *ngIf="successMessage" class="text-green-600 mt-4">
-      {{ successMessage }}
-    </div>
-  </form>
-</div>
+      <div class="pt-4">
+        <button
+          type="button"
+          (click)="addParameter()"
+          class="bg-blue-500 text-white px-4 py-2 rounded mr-2"
+        >
+          Agregar Rol
+        </button>
+        <button
+          type="submit"
+          [disabled]="!commissionForm.form.valid"
+          class="bg-green-500 text-white px-4 py-2 rounded"
+        >
+          Guardar Parámetros
+        </button>
+      </div>
+
+      <div *ngIf="successMessage" class="text-green-600 mt-4">
+        {{ successMessage }}
+      </div>
+    </form>
+  </section>
+</main>

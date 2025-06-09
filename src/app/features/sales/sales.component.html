@@ -1,1 +1,121 @@
-<p>sales works!</p>
+<!--
+  Sección de registro y visualización de ventas.
+  El formulario permite registrar una nueva venta, que se almacena en localStorage a través de SalesStorageService.
+  Las ventas registradas se visualizan en la tabla inferior, permitiendo ver el histórico de ventas.
+  Los roles parametrizados son cargados desde CommissionStorageService para seleccionar el rol del vendedor.
+-->
+
+<main class="p-6 max-w-4xl mx-auto bg-white rounded-lg shadow">
+  <header>
+    <h2 class="text-2xl font-bold mb-4">Registro de Ventas</h2>
+  </header>
+
+  <section aria-labelledby="sales-section">
+    <form (ngSubmit)="saveSale()" #salesForm="ngForm" class="space-y-4 mb-6">
+      <fieldset>
+        <legend id="sales-section" class="sr-only">Registro de venta</legend>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <label>
+            <span class="block text-sm font-medium text-gray-700 mb-1"
+              >Nombre del empleado</span
+            >
+            <input
+              type="text"
+              [(ngModel)]="newSale.employeeName"
+              name="employeeName"
+              required
+              placeholder="Nombre del empleado"
+              class="border p-2 rounded w-full"
+            />
+          </label>
+
+          <label>
+            <span class="block text-sm font-medium text-gray-700 mb-1"
+              >Rol del empleado</span
+            >
+            <select
+              [(ngModel)]="newSale.role"
+              name="role"
+              required
+              class="border p-2 rounded w-full"
+            >
+              <option
+                *ngFor="let param of commissionParameters"
+                [value]="param.role"
+              >
+                {{ param.role }}
+              </option>
+            </select>
+          </label>
+
+          <label>
+            <span class="block text-sm font-medium text-gray-700 mb-1"
+              >Valor de la venta</span
+            >
+            <input
+              type="number"
+              [(ngModel)]="newSale.amount"
+              name="amount"
+              required
+              min="0"
+              placeholder="Valor de la venta"
+              class="border p-2 rounded w-full"
+            />
+          </label>
+
+          <label>
+            <span class="block text-sm font-medium text-gray-700 mb-1"
+              >Fecha de la venta</span
+            >
+            <input
+              type="date"
+              [(ngModel)]="newSale.date"
+              name="date"
+              required
+              class="border p-2 rounded w-full"
+            />
+          </label>
+        </div>
+
+        <div class="pt-4">
+          <button
+            type="submit"
+            [disabled]="!salesForm.form.valid"
+            class="bg-green-500 text-white px-4 py-2 rounded"
+          >
+            Registrar Venta
+          </button>
+        </div>
+
+        <div *ngIf="successMessage" class="text-green-600 mt-4">
+          {{ successMessage }}
+        </div>
+      </fieldset>
+    </form>
+  </section>
+
+  <!-- Tabla de ventas registradas -->
+  <section class="mt-8">
+    <h3 class="text-xl font-bold mb-4">Ventas Registradas</h3>
+
+    <table class="min-w-full border text-center">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="border px-4 py-2">Empleado</th>
+          <th class="border px-4 py-2">Rol</th>
+          <th class="border px-4 py-2">Valor Venta</th>
+          <th class="border px-4 py-2">Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of sales">
+          <td class="border px-4 py-2">{{ sale.employeeName }}</td>
+          <td class="border px-4 py-2">{{ sale.role }}</td>
+          <td class="border px-4 py-2">${{ sale.amount | number }}</td>
+          <td class="border px-4 py-2">{{ sale.date | date : "shortDate" }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
