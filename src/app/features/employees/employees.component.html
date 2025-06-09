@@ -1,1 +1,96 @@
-<p>employees works!</p>
+<!--
+  Sección de registro y visualización de empleados.
+  El formulario permite registrar un nuevo empleado (nombre + rol).
+  Los empleados se almacenan en localStorage a través de EmployeeStorageService.
+  Los roles son cargados desde CommissionStorageService.
+  Los empleados registrados se visualizan en la tabla inferior.
+-->
+
+<main class="p-6 max-w-4xl mx-auto bg-white rounded-lg shadow">
+  <header>
+    <h2 class="text-2xl font-bold mb-4">Gestión de Empleados</h2>
+  </header>
+
+  <section aria-labelledby="employees-section">
+    <form
+      (ngSubmit)="saveEmployee()"
+      #employeeForm="ngForm"
+      class="space-y-4 mb-6"
+    >
+      <fieldset>
+        <legend id="employees-section" class="sr-only">
+          Registro de empleado
+        </legend>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <label>
+            <span class="block text-sm font-medium text-gray-700 mb-1"
+              >Nombre del empleado</span
+            >
+            <input
+              type="text"
+              [(ngModel)]="newEmployee.name"
+              name="employeeName"
+              required
+              placeholder="Nombre del empleado"
+              class="border p-2 rounded w-full"
+            />
+          </label>
+
+          <label>
+            <span class="block text-sm font-medium text-gray-700 mb-1"
+              >Rol del empleado</span
+            >
+            <select
+              [(ngModel)]="newEmployee.role"
+              name="role"
+              required
+              class="border p-2 rounded w-full"
+            >
+              <option
+                *ngFor="let param of commissionParameters"
+                [value]="param.role"
+              >
+                {{ param.role }}
+              </option>
+            </select>
+          </label>
+        </div>
+
+        <div class="pt-4">
+          <button
+            type="submit"
+            [disabled]="!employeeForm.form.valid"
+            class="bg-green-500 text-white px-4 py-2 rounded"
+          >
+            Registrar Empleado
+          </button>
+        </div>
+
+        <div *ngIf="successMessage" class="text-green-600 mt-4">
+          {{ successMessage }}
+        </div>
+      </fieldset>
+    </form>
+  </section>
+
+  <!-- Tabla de empleados registrados -->
+  <section class="mt-8">
+    <h3 class="text-xl font-bold mb-4">Empleados Registrados</h3>
+
+    <table class="min-w-full border text-center">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="border px-4 py-2">Nombre</th>
+          <th class="border px-4 py-2">Rol</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td class="border px-4 py-2">{{ employee.name }}</td>
+          <td class="border px-4 py-2">{{ employee.role }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
