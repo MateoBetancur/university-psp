@@ -36,18 +36,35 @@
     </table>
   </section>
 
-  <!-- Gráfico de barras -->
+  <!-- Gráficos de barras y torta en una línea -->
   <section class="mb-8">
-    <h3 class="text-xl font-bold mb-4">Gráfico de Barras - Total Comisión</h3>
-    <canvas id="barChart"></canvas>
-  </section>
+    <h3 class="text-xl font-bold mb-4">Gráficos de Comisiones</h3>
 
-  <!-- Gráfico de torta -->
-  <section class="mb-8">
-    <h3 class="text-xl font-bold mb-4">
-      Gráfico de Torta - Distribución de Comisiones
-    </h3>
-    <canvas id="pieChart"></canvas>
+    <div class="flex flex-wrap gap-6">
+      <!-- Gráfico de Barras -->
+      <div
+        class="flex-1 min-w-[300px] max-w-[500px] bg-white shadow-lg rounded-lg p-4"
+      >
+        <h4 class="text-lg font-semibold mb-2">
+          Gráfico de Barras - Total Comisión
+        </h4>
+        <div class="relative h-[400px]">
+          <canvas id="barChart" class="absolute inset-0"></canvas>
+        </div>
+      </div>
+
+      <!-- Gráfico de Torta -->
+      <div
+        class="flex-1 min-w-[300px] max-w-[500px] bg-white shadow-lg rounded-lg p-4"
+      >
+        <h4 class="text-lg font-semibold mb-2">
+          Gráfico de Torta - Distribución de Comisiones
+        </h4>
+        <div class="relative aspect-square max-w-[400px] mx-auto">
+          <canvas id="pieChart" class="absolute inset-0"></canvas>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Lista top 3 empleados -->

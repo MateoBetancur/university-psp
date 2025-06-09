@@ -78,6 +78,9 @@ export class CalculateCommissionsComponent implements OnInit {
           },
         ],
       },
+      options: {
+        responsive: true,
+      },
     });
 
     // Gráfico de torta
@@ -99,6 +102,9 @@ export class CalculateCommissionsComponent implements OnInit {
             ],
           },
         ],
+      },
+      options: {
+        responsive: true,
       },
     });
   }
